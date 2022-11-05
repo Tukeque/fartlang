@@ -1,0 +1,78 @@
+// Rust/C style
+
+struct FartStruct {
+    name: u8,
+    fart_count: u8
+}
+
+fn something(x: FartStruct) -> u8 {
+    return x.name + x.fart_count;
+}
+
+fn fart(fart2: u8, fart3: u8) -> u8 {
+    let fart4: u8 = fart2 + fart3;
+
+    let fart5: FartStruct = FartStruct {
+        name: fart2,
+        fart_count: fart4
+    };
+
+    return something(fart5);
+}
+
+push r3
+push r2
+call fart
+pop r1
+
+r1 = fart(r2, r3)
+
+; "Extended Assembly"
+
+-- config.txt --
+
+struct FartStruct (name: 1, fart_count: 1) 
+
+
+
+fn stuff(a, b) -> 1 {
+    let c = + a b;
+    return c;
+}
+
+push a
+psuh b
+call stuff
+pop r1
+pop r2
+pop r0
+pop r0
+pop r0
+
+
+
+r1 = 3
+r2 = 7
+
+# r3 = r1 + r2
+
+push r2
+push r1
+call stuff
+pop r3
+
+def stuff
+    addsp -1
+    ldlocal r1 1
+    ldlocal r2 2
+
+
+    add r3 r1 r2
+    stlocal r3 0
+
+
+    ldlocal r1 0
+    addsp 3
+    push r1
+    return
+
